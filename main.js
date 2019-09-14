@@ -1,18 +1,20 @@
-// Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
-const path = require('path')
+const { app, BrowserWindow, crashReporter } = require('electron');
+const path = require('path');
+const constants = require('./constants');
+
+app.setPath('temp', constants.settings.tmpDir);
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-function createWindow () {
+function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      nodeIntegration: true
     }
   })
 
@@ -29,6 +31,20 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+  setTimeout(function () {
+    console.log("Stating crash reporter in main");
+
+    crashReporter.start(constants.settings.crashReporterOptions);
+  }, 1000);
+
+  if (constants.settings.crashMain) {
+    setTimeout(function () {
+      console.log("Crashing main process");
+
+      process.crash();
+    }, 2000);
+  }
 }
 
 // This method will be called when Electron has finished

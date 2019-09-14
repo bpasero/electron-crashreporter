@@ -1,3 +1,13 @@
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
-// All of the Node.js APIs are available in this process.
+const { crashReporter } = require('electron');
+const constants = require('./constants');
+
+crashReporter.start(crashReporter.start(constants.settings.crashReporterOptions););
+
+if (constants.settings.crashRenderer) {
+    setTimeout(function () {
+        console.log("Crashing renderer process");
+
+        process.crash();
+    }, 2000);
+}
+

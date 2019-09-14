@@ -34,7 +34,7 @@ function createWindow() {
 
   if (constants.settings.enableCrashReporter) {
     setTimeout(function () {
-      console.log("Stating crash reporter in main");
+      console.log("Starting crash reporter in main");
 
       crashReporter.start(constants.settings.crashReporterOptions);
     }, 1000);

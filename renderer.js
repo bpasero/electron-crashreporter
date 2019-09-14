@@ -4,7 +4,9 @@ const child_process = require('child_process');
 const path = require('path');
 
 if (constants.settings.enableCrashReporter) {
-    crashReporter.start(crashReporter.start(constants.settings.crashReporterOptions));
+    console.log("Starting crash reporter in renderer");
+
+    crashReporter.start(constants.settings.crashReporterOptions);
 }
 
 if (constants.settings.crashRenderer) {

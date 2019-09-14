@@ -3,7 +3,9 @@ const constants = require('./constants');
 const child_process = require('child_process');
 const path = require('path');
 
-crashReporter.start(crashReporter.start(constants.settings.crashReporterOptions););
+if (constants.settings.enableCrashReporter) {
+    crashReporter.start(crashReporter.start(constants.settings.crashReporterOptions));
+}
 
 if (constants.settings.crashRenderer) {
     setTimeout(function () {

@@ -1,4 +1,5 @@
 module.exports.settings = {
+    enableCrashReporter: true,
     crashMain: false,
     crashRenderer: false,
     crashChildProcess: false,

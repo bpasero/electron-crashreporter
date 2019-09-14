@@ -3,7 +3,7 @@ module.exports.settings = {
     crashMain: false,
     crashRenderer: false,
     crashChildProcess: false,
-    tmpDir: '/Users/bpasero/Desktop/electron-quick-start/crashes',
+    tmpDir: undefined,
     crashReporterOptions: {
         companyName: 'Comtoso',
         productName: 'Comtoso',

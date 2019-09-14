@@ -2,6 +2,10 @@ const { app, BrowserWindow, crashReporter } = require('electron');
 const path = require('path');
 const constants = require('./constants');
 
+if (!constants.settings.tmpDir) {
+  throw new Error('Provide a tmpDir in constants.js!');
+}
+
 app.setPath('temp', constants.settings.tmpDir);
 
 // Keep a global reference of the window object, if you don't, the window will
